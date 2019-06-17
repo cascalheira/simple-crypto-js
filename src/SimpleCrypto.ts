@@ -20,7 +20,7 @@ export default class SimpleCrypto {
 
   public encrypt(data: object | string | number | boolean): string {
     if (data == void 0) throw new Error('No data was attached to be encrypted. Encryption halted.');    
-    const string: string = typeof data == "object" ? JSON.stringify(data) : typeof data == "string" || typeof data == "number" || typeof data == 'boolean' ? data.toString() : null;
+    const string: string = typeof data == "object" ? JSON.stringify(data) : typeof data == "string" || typeof data == "number" || typeof data == 'boolean' ? data.toString() : "";
     if (null === string) throw new Error('Only object, string, number and boolean data types that can be encrypted.');
     const salt: string | CryptoJS.WordArray = SimpleCrypto.generateRandom(128, true);
     const key: CryptoJS.WordArray = CryptoJS.PBKDF2(this._secret, salt, {
